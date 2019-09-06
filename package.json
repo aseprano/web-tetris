@@ -1,7 +1,7 @@
 {
   "name": "web-tetris",
   "description": "Web version of TETRIS",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "darkbyte",
   "license": "ISC",
   "homepage": "https://github.com/aseprano/web-tetris#readme",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@types/jasmine": "^3.4.0",
+    "coveralls": "^3.0.6",
     "jasmine": "^3.4.0",
     "jasmine-ts": "^0.3.0",
     "nyc": "^14.1.1",
