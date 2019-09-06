@@ -11,7 +11,9 @@
     "tetris"
   ],
   "scripts": {
-    "test": "test"
+    "build": "tsc -p .",
+    "test": "test",
+    "start": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
