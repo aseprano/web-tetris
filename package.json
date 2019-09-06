@@ -13,6 +13,7 @@
   "scripts": {
     "build": "tsc -p .",
     "test": "jasmine-ts",
+    "coverage": "nyc npm run test report --reporter=text-lcov | coveralls",
     "start": "ts-node src/index.ts"
   },
   "repository": {
