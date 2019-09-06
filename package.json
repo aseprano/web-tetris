@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "tsc -p .",
-    "test": "test",
+    "test": "jasmine-ts",
     "start": "ts-node src/index.ts"
   },
   "repository": {
