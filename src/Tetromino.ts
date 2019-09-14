@@ -15,6 +15,6 @@ export interface Tetromino {
     /**
      * Returns the list of points of the current tetromino rotation
      */
-    getPoints(): Point[];
+    points: Point[];
 
 }
