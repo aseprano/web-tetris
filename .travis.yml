@@ -1,5 +1,9 @@
 language: node_js
 node_js:
     - 10
+branches:
+    only:
+        - master
+        - /^v\d+\.\d+\.\d+$/
 after_success:
     - npm run coverage
