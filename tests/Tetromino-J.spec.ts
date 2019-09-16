@@ -17,7 +17,7 @@ describe('Tetromino-J', () => {
     it('should have an initial position of 0', () => {
         const t = new TetrominoJ();
         expect(t.position).toBe(0);
-        expect(t.points).not.toBeNull();
+        expect(t.points).toBe(J_P0);
     });
 
     it('should increase its position in range 0-3 when rotate right',  () => {
