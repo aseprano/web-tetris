@@ -1,5 +1,6 @@
 import { TetrominoJ } from '../src/Tetromino-J';
 import { Tetromino } from '../src/Tetromino';
+import { J_P0, J_P1, J_P2, J_P3} from '../src/Tetromino-J.positions';
 
 describe('Tetromino-J', () => {
 
@@ -13,7 +14,7 @@ describe('Tetromino-J', () => {
         
     });
 
-    it('should have an initial position', () => {
+    it('should have an initial position of 0', () => {
         const t = new TetrominoJ();
         expect(t.position).toBe(0);
         expect(t.points).not.toBeNull();
@@ -60,30 +61,25 @@ describe('Tetromino-J', () => {
 
     it('should rotate left', () => {
         const t = new TetrominoJ();
-        const points = t.points;
-        
+
         t.rotateLeft();
         
         const pos1 = t.position;
         const points1 = t.points;
-        
         expect(pos1).toEqual(3);
-
-        expect(points).not.toEqual(points1);
+        expect(points1).toEqual(J_P3);
     });
 
     it('should rotate right', () => {
         const t = new TetrominoJ();
 
-        const points = t.points;
-        
         t.rotateRight();
         
         const pos1 = t.position;
         const points1 = t.points;
         
         expect(pos1).toEqual(1);
-        expect(points).not.toEqual(points1);
+        expect(points1).toEqual(J_P1);
     });
 
     it('should have consistent rotations', () => {
