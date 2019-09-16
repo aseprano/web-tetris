@@ -95,6 +95,9 @@ export class TetrominoJ implements Tetromino {
 
     private positionsPoints: Point[][] = [J_P0, J_P1, J_P2, J_P3];
 
+    /**
+     * Range 0-3
+     */
     position: number;
 
     get points(): Point[] {
@@ -105,11 +108,32 @@ export class TetrominoJ implements Tetromino {
         this.position = 0;
     }
 
+    /**
+     * Ensure position decreases
+     * and is always in range 0-3
+     */
     rotateLeft(): void {
-        this.position -= 1;
+
+
+        const ins = 1;
+        
+        var l = (ins: number) => {
+            return ((((ins) % 4) + 4) == 4)? 0 : (((ins) % 4) >= 0) ? (ins) % 4 : ((ins) % 4) + 4
+        }
+
+        this.position = l(this.position - 1);
     }
 
+    /**
+     * Ensure position increases
+     * and is always in range 0-3
+     */
     rotateRight(): void {
-        this.position += 1;
+
+        var l = (ins: number) => {
+            return ((((ins) % 4) + 4) == 4)? 0 : (((ins) % 4) >= 0) ? (ins) % 4 : ((ins) % 4) + 4
+        }
+
+        this.position = l(this.position + 1);
     }
 }
