@@ -33,13 +33,13 @@ export interface Matrix {
      * Tries to rotate the current tetromino left.
      * If the tetromino cannot rotate, nothing happens.
      */
-    rotateLeft(): void;
+    rotateLeft(): boolean;
 
     /**
      * Tries to rotate the current tetromino right.
      * If the tetromino cannot rotate, nothing happens.
      */
-    rotateRight(): void;
+    rotateRight(): boolean;
 
     /**
      * Tries to move the current tetromino one row down.
@@ -47,10 +47,14 @@ export interface Matrix {
      */
     moveDown(): boolean;
 
+    moveLeft(): boolean;
+
+    moveRight(): boolean;
+
     /**
-     * Returns a full copy of the 10x20 cells matrix
+     * Returns a full snapshot of the 10x20 cells matrix
      */
-    getPixels(): Cell[][];
+    getSnapshot(): Cell[][];
 
     /**
      * Adds an observer to the list of observers.
