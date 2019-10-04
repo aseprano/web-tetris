@@ -51,6 +51,8 @@ export interface Matrix {
 
     moveRight(): boolean;
 
+    removeLines(lines: number[]): void;
+
     /**
      * Returns a full snapshot of the 10x20 cells matrix
      */
