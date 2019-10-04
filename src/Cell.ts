@@ -1,3 +1,9 @@
-export type Cell = {
-    isOccupied: boolean;
+export class Cell {
+    
+    constructor(private occupied: boolean = false) {}
+
+    isOccupied(): boolean {
+        return this.occupied;
+    }
+    
 }
