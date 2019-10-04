@@ -7,7 +7,7 @@ describe('Tetromino-J', () => {
     it('should implement Tetramino', () => {
         
         const t = new TetrominoJ();
-        const x: Tetromino = { rotateRight: () => {}, rotateLeft: () => {}, points: []};
+        const x: Tetromino = { rotateRight: () => {}, rotateLeft: () => {}, getPoints: () => []};
         
         expect(t).toBeTruthy();
         expect(typeof t).toEqual(typeof x);
@@ -17,7 +17,7 @@ describe('Tetromino-J', () => {
     it('should have an initial position of 0', () => {
         const t = new TetrominoJ();
         expect(t.position).toBe(0);
-        expect(t.points).toBe(J_P0);
+        expect(t.getPoints()).toBe(J_P0);
     });
 
     it('should increase its position in range 0-3 when rotate right',  () => {
@@ -65,7 +65,7 @@ describe('Tetromino-J', () => {
         t.rotateLeft();
         
         const pos1 = t.position;
-        const points1 = t.points;
+        const points1 = t.getPoints();
         expect(pos1).toEqual(3);
         expect(points1).toEqual(J_P3);
     });
@@ -76,7 +76,7 @@ describe('Tetromino-J', () => {
         t.rotateRight();
         
         const pos1 = t.position;
-        const points1 = t.points;
+        const points1 = t.getPoints();
         
         expect(pos1).toEqual(1);
         expect(points1).toEqual(J_P1);

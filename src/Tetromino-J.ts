@@ -9,5 +9,5 @@ import { J_P0, J_P1, J_P2, J_P3 } from './Tetromino-J.positions';
  * 
  */
 export class TetrominoJ extends TetrominoBase {
-    positionsPoints: Point[][] = [J_P0, J_P1, J_P2, J_P3];
+    protected positionsPoints: Point[][] = [J_P0, J_P1, J_P2, J_P3];
 }

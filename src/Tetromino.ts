@@ -15,7 +15,7 @@ export interface Tetromino {
     /**
      * Returns the list of points of the current tetromino rotation
      */
-    points: Point[];
+    getPoints(): Point[];
 
 }
 
@@ -39,7 +39,7 @@ export abstract class TetrominoBase implements Tetromino {
      * 
      * Hold the current coordinates of the tetromino as a `Point` array
      */
-    get points(): Point[] {
+    getPoints(): Point[] {
         return this.positionsPoints[this.position];
     }
 
