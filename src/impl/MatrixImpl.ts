@@ -4,11 +4,35 @@ import { Tetromino } from "../Tetromino";
 import { Cell } from "../Cell";
 import { MatrixTmino } from "./MatrixTmino";
 
+class NullTetromino implements Tetromino {
+
+    rotateLeft(): void {
+    }
+    
+    rotateRight(): void {
+    }
+
+    getPoints(): Point[] {
+        return [];
+    }
+
+}
+
 export class MatrixImpl implements Matrix {
+    /**
+     * cells are ordere by row, then by column
+     * Cells[y][x]
+     **/
     private cells: Cell[][] = [];
-    private currentTmino?: MatrixTmino;
+
+    private currentTmino: MatrixTmino;
 
     constructor() {
+        this.currentTmino = new MatrixTmino(
+            new NullTetromino(),
+            new Point(0,0)
+        );
+
         for (let row=0; row < 20; ++row) {
             const theRow = [];
 
@@ -20,8 +44,26 @@ export class MatrixImpl implements Matrix {
         }
     }
 
+    private getCell(coordinates: Point): Cell {
+        return this.cells[coordinates.getY()][coordinates.getX()];
+    }
+
+    private pointOverflows(point: Point): boolean {
+        return point.getX() < 0
+            || point.getX() >= this.cells[0].length
+            || point.getY() >= this.cells.length;
+    }
+
+    private cellIsOccupied(coordinates: Point): boolean {
+        return this.getCell(coordinates).isOccupied();
+    }
+
     private tminoCollides(): boolean {
-        return false;
+        return this.currentTmino
+            .getPoints()
+            .find(point => {
+                return this.pointOverflows(point) || this.cellIsOccupied(point);
+            }) !== undefined;
     }
 
     insert(newTmino: Tetromino): boolean {
@@ -46,14 +88,10 @@ export class MatrixImpl implements Matrix {
     }
 
     moveLeft(): boolean {
-        throw new Error("Method not implemented.");
+        
     }
     
     moveRight(): boolean {
-        throw new Error("Method not implemented.");
-    }
-
-    getPixels(): Cell[][] {
         throw new Error("Method not implemented.");
     }
 
@@ -62,7 +100,7 @@ export class MatrixImpl implements Matrix {
     }
 
     addObserver(observer: MatrixObserver): void {
-        throw new Error("Method not implemented.");
+        
     }
 
     
