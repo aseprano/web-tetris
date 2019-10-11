@@ -1,11 +1,11 @@
 import { Tetromino } from "../src/Tetromino";
 
-import { TetrominoJ } from "../src/tetrominos/Tetromino-J";
-import { J_P0, J_P1, J_P2, J_P3 } from "../src/tetrominos/Tetromino-J.positions";
+import { TetrominoL } from "../src/tetrominos/Tetromino-L";
+import { L_P0, L_P1, L_P2, L_P3 } from "../src/tetrominos/Tetromino-L.positions";
 
-describe("Tetromino-J", () => {
+describe("Tetromino-L", () => {
   it("should implement Tetramino", () => {
-    const t = new TetrominoJ();
+    const t = new TetrominoL();
     const x: Tetromino = { rotateRight: () => {}, rotateLeft: () => {}, getPoints: () => [] };
 
     expect(t).toBeTruthy();
@@ -13,13 +13,13 @@ describe("Tetromino-J", () => {
   });
 
   it("should have an initial position of 0", () => {
-    const t = new TetrominoJ();
+    const t = new TetrominoL();
     expect(t.position).toBe(0);
-    expect(t.getPoints()).toBe(J_P0);
+    expect(t.getPoints()).toBe(L_P0);
   });
 
   it("should increase its position in range 0-3 when rotate right", () => {
-    const t = new TetrominoJ();
+    const t = new TetrominoL();
     t.rotateRight();
 
     const pos1 = t.position;
@@ -39,7 +39,7 @@ describe("Tetromino-J", () => {
   });
 
   it("should decrease its position in range 0-3 when rotate left", () => {
-    const t = new TetrominoJ();
+    const t = new TetrominoL();
     t.rotateLeft();
     const pos1 = t.position;
     expect(pos1).toEqual(3);
@@ -58,18 +58,18 @@ describe("Tetromino-J", () => {
   });
 
   it("should rotate left", () => {
-    const t = new TetrominoJ();
+    const t = new TetrominoL();
 
     t.rotateLeft();
 
     const pos1 = t.position;
     const points1 = t.getPoints();
     expect(pos1).toEqual(3);
-    expect(points1).toEqual(J_P3);
+    expect(points1).toEqual(L_P3);
   });
 
   it("should rotate right", () => {
-    const t = new TetrominoJ();
+    const t = new TetrominoL();
 
     t.rotateRight();
 
@@ -77,11 +77,11 @@ describe("Tetromino-J", () => {
     const points1 = t.getPoints();
 
     expect(pos1).toEqual(1);
-    expect(points1).toEqual(J_P1);
+    expect(points1).toEqual(L_P1);
   });
 
   it("should have consistent rotations", () => {
-    const t = new TetrominoJ();
+    const t = new TetrominoL();
 
     t.rotateLeft();
     t.rotateLeft();
