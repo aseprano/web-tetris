@@ -5,5 +5,9 @@ export class Cell {
     isOccupied(): boolean {
         return this.occupied;
     }
+
+    setIsOccupied(): void {
+        this.occupied = true;
+    }
     
 }
