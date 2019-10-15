@@ -54,21 +54,41 @@ export class MatrixImpl implements Matrix {
             || point.getY() >= this.cells.length;
     }
 
-    private cellIsOccupied(coordinates: Point): boolean {
-        return this.getCell(coordinates).isOccupied();
-    }
-
     private tminoCollides(): boolean {
         return this.currentTmino
-            .getPoints()
+            .getPointsRelativeToMatrix()
             .find(point => {
                 return this.pointOverflows(point) || this.cellIsOccupied(point);
             }) !== undefined;
     }
 
+    private tryMoveTetrominoBy(delta: Point): boolean {
+        const oldPosition = this.getCurrentPosition();
+        this.currentTmino.setPosition(oldPosition.add(delta));
+        
+        if (this.tminoCollides()) {
+            this.currentTmino.setPosition(oldPosition);
+            return false;
+        }
+
+        return true;
+    }
+
     insert(newTmino: Tetromino): boolean {
         this.currentTmino = new MatrixTmino(newTmino, new Point(4, 0));
         return this.tminoCollides();
+    }
+
+    public occupyCell(cellCoordinates: Point): void {
+        this.getCell(cellCoordinates).setIsOccupied();
+    }
+
+    public cellIsOccupied(cellCoordinates: Point): boolean {
+        return this.getCell(cellCoordinates).isOccupied();
+    }
+
+    public getCurrentPosition(): Point {
+        return this.currentTmino.getPosition();
     }
 
     getSnapshot(): Cell[][] {
@@ -84,15 +104,15 @@ export class MatrixImpl implements Matrix {
     }
 
     moveDown(): boolean {
-        throw new Error("Method not implemented.");
+        return this.tryMoveTetrominoBy(new Point(0, 1));
     }
 
     moveLeft(): boolean {
-        
+        return this.tryMoveTetrominoBy(new Point(-1, 0));
     }
     
     moveRight(): boolean {
-        throw new Error("Method not implemented.");
+        return this.tryMoveTetrominoBy(new Point(+1, 0));
     }
 
     removeLines(lines: number[]) {

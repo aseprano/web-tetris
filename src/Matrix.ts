@@ -21,8 +21,8 @@ export interface Matrix {
 
     /**
      * Inserts a new tetroimino as the current block.
-     * The new tetromino is put in the middle cell of the topmost row, even if it overlaps
-     * other pixels.
+     * The new tetromino is put in the middle cell of the topmost row (x=4, y=0),
+     * even if it overlaps other cells.
      * Returns false if the newly placed tetromino overlaps.
      * 
      * @param newTetromino 
@@ -52,12 +52,7 @@ export interface Matrix {
     moveRight(): boolean;
 
     removeLines(lines: number[]): void;
-
-    /**
-     * Returns a full snapshot of the 10x20 cells matrix
-     */
-    getSnapshot(): Cell[][];
-
+    
     /**
      * Adds an observer to the list of observers.
      * 

@@ -25,5 +25,10 @@ export class MatrixTmino implements Tetromino {
         return this.tmino.getPoints();
     }
 
+    getPointsRelativeToMatrix(): Point[] {
+        return this.tmino.getPoints()
+            .map(point => point.add(this.position));
+    }
+
 
 }
