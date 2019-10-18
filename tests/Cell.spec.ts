@@ -1,4 +1,4 @@
-import { Cell } from "../src/Cell";
+import { Cell } from "../src/impl/Cell";
 
 describe('Cell', () => {
     

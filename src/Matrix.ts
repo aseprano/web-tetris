@@ -1,5 +1,5 @@
 import { Tetromino } from './Tetromino';
-import { Cell } from './Cell';
+import { ImmutableCell } from './ImmutableCell';
 
 /**
  * Represents an observer of the Matrix.
@@ -13,7 +13,7 @@ export interface MatrixObserver {
      * @param matrix The matrix that has changed. 
      * @param newPixels A copy of the current matrix status.
      */
-    matrixDidUpdate(matrix: Matrix, newPixels: Cell[][]): void;
+    matrixDidUpdate(matrix: Matrix, newPixels: ImmutableCell[][]): void;
 
 }
 

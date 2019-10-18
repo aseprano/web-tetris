@@ -1,8 +1,9 @@
 import { Matrix, MatrixObserver } from "../Matrix";
 import { Point } from "../Point";
 import { Tetromino } from "../Tetromino";
-import { Cell } from "../Cell";
+import { Cell } from "./Cell";
 import { MatrixTmino } from "./MatrixTmino";
+import { ImmutableCell } from "../ImmutableCell";
 
 class NullTetromino implements Tetromino {
 
@@ -91,8 +92,12 @@ export class MatrixImpl implements Matrix {
         return this.currentTmino.getPosition();
     }
 
-    getSnapshot(): Cell[][] {
-        throw new Error("Method not implemented.");
+    getSnapshot(): ImmutableCell[][] {
+        const snapshot: ImmutableCell[][] = [];
+        this.cells.forEach(
+            row => snapshot.push([...row])
+        );
+        return snapshot;
     }
     
     rotateLeft(): boolean {

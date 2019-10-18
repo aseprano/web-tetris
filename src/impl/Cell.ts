@@ -1,4 +1,6 @@
-export class Cell {
+import { ImmutableCell } from "../ImmutableCell";
+
+export class Cell implements ImmutableCell {
     
     constructor(private occupied: boolean = false) {}
 
