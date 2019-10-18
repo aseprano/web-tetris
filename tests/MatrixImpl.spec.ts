@@ -4,7 +4,7 @@ import { TetrominoJ } from "../src/Tetromino-J";
 
 describe('MatrixImpl', () => {
 
-    /**  0   1   2   3   4   5   6   7   8   9
+    /**  0   1   2   3   4   5   6   7   8   9 <x
      * +---+---+---+---+---+---+---+---+---+---+
      * |   |   |   | x | x | x |   |   |   |   | 0
      * +---+---+---+---+---+---+---+---+---+---+
@@ -42,12 +42,12 @@ describe('MatrixImpl', () => {
         expect(snapshot3[0].length).toEqual(10);
     })
 
-    xit('inserts tetromions in correct position', () => {
+    it('inserts tetromions in correct position', () => {
         const matrix = new MatrixImpl();
         matrix.insert(tetrominoJ);
-        const points = matrix.getSnapshot();
+        const snapshot = matrix.getSnapshot();
         expectedCoordinates.forEach(coordinate => {
-            expect(points[coordinate.y][coordinate.x].isOccupied())
+            expect(snapshot[coordinate.y][coordinate.x].isOccupied())
             .toEqual(true);
         });
     });

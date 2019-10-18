@@ -93,10 +93,18 @@ export class MatrixImpl implements Matrix {
     }
 
     getSnapshot(): ImmutableCell[][] {
-        const snapshot: ImmutableCell[][] = [];
+        const snapshot: Cell[][] = [];
         this.cells.forEach(
             row => snapshot.push([...row])
         );
+        const currentPosition = this.currentTmino.getPosition();
+        this.currentTmino.getPoints()
+            .map(
+                point => point.add(currentPosition)
+            )
+            .forEach(
+                point => snapshot[point.getY()][point.getX()].setIsOccupied()
+            );
         return snapshot;
     }
     
