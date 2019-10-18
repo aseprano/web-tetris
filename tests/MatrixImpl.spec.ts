@@ -15,7 +15,7 @@ describe('MatrixImpl', () => {
      */
 
     const tetrominoJ = new TetrominoJ();
-    const expectedCoordinates = [
+    const tetrominoStartingCoordinates = [
         {x: 3, y:0},
         {x: 4, y:0},
         {x: 5, y:0},
@@ -42,13 +42,16 @@ describe('MatrixImpl', () => {
         expect(snapshot3[0].length).toEqual(10);
     })
 
-    it('inserts tetromions in correct position', () => {
+    it('inserts tetrominos in correct position', () => {
         const matrix = new MatrixImpl();
         matrix.insert(tetrominoJ);
+
         const snapshot = matrix.getSnapshot();
-        expectedCoordinates.forEach(coordinate => {
+
+        tetrominoStartingCoordinates.forEach(coordinate => {
             expect(snapshot[coordinate.y][coordinate.x].isOccupied())
             .toEqual(true);
         });
     });
+
 });
